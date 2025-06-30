@@ -1,0 +1,9 @@
+body{
+  background-color: rgb(16, 16, 16);
+  color:white;
+}
+.flexcenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

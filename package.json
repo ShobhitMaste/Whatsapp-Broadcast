@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@electron/remote": "^2.1.2",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
@@ -9,9 +10,10 @@
   "name": "whatsapp-automation",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "keywords": [],
   "author": "",
