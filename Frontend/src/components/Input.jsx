@@ -8,49 +8,81 @@ export default function Input() {
     setMessageBoxes((prevCount) => prevCount + 1);
   }
 
-  function handleSubmit(event){
+  function handleDeleteMessage() {
+    setMessageBoxes((prevCount) => (prevCount != 0) ? prevCount - 1 : 0);
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const code = formData.get('code');
-    const number = formData.get('number');
+    let code = formData.get("code");
+    let number = formData.get("number");
+    let tempArray = [];
+    for (let i = 0; i < messageBoxes; i++) {
+      tempArray.push(formData.get(`message${i}`));
+    }
     setMessages(() => {
-        let updated = [];
-        for(let i = 0; i < messageBoxes; i++){
-            updated.push(formData.get(`message${i}`));
-        }
-        return updated;
-    })
-    console.log(messages);
+      let updated = [];
+      for (let i = 0; i < messageBoxes; i++) {
+        updated.push(formData.get(`message${i}`));
+      }
+      return updated;
+    });
+    code = code.slice(1);
+    number = code + number;
+    console.log(code, number, tempArray);
+    let response = await window.electronAPI.sendMessage({
+      number,
+      message: tempArray,
+    });
+    console.log(response);
   }
 
   return (
     <div className="flexcenter">
-      <form className="flexcol" onSubmit={handleSubmit}>
-        <label>Country Code - </label>
+      <form
+        className="flexstart flexcol forms pb-5 mb-5"
+        onSubmit={handleSubmit}
+      >
+        <label className="mb-2">Country Code - </label>
         <select name="code">
-          <option>+91</option>
+          <option selected>+91</option>
           <option>+81</option>
         </select>
-        <label className="mt-3">Number - </label>
-        <input name="number" type="number" />
-        <div className="flexcenter">
-          <div className="flexcol messagebox mt-3">
+        <label className="mt-4 mb-2">Number - </label>
+        <input name="number" type="number" className="mb-3" />
+        <div className="flexcenter width100">
+          <div className="flexcol flexstart messagebox mt-3 width100">
             {Array.from({ length: messageBoxes }).map((it, index) => {
               return (
-                <li key={index} className="mb-3">
-                  <label>Message {index + 1} - </label><br/>
-                  <textarea name={`message${index}`}></textarea>
+                <li key={index} className="mb-3 width100">
+                  <div className="flexspaceBetween mb-2">
+                    <label className="flexcenter">Message {index + 1} - </label>
+                  </div>
+
+                  <textarea
+                    className="width100"
+                    name={`message${index}`}
+                  ></textarea>
                 </li>
               );
             })}
           </div>
-          <button onClick={handleAddMessage} type="button">
+        </div>
+        <div>
+          <button type="submit" className="me-4">
+            Submit
+          </button>
+          <button onClick={handleAddMessage} className="me-4" type="button">
             Add More Messages
           </button>
+          <button
+            type="button"
+            onClick={handleDeleteMessage}
+          >
+            Delete
+          </button>
         </div>
-        <button type="submit">
-            Submit
-        </button>
       </form>
     </div>
   );
