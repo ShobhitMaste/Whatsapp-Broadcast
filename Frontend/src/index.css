@@ -15,6 +15,25 @@
     text-shadow: 1px 1px 5px #00ff9950;
   }
 
+  /* HTML: <div class="loader"></div> */
+  .loader {
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 6px solid lightblue;
+    border-right-color: orange;
+    animation: l2 1s infinite linear;
+    float: right;
+    margin-left: 10px;
+  }
+  @keyframes l2 {to{transform: rotate(1turn)}}
+
+  
+  .text{
+    font-size: 17px;
+    font-weight: bold;
+  }
+
   .flexcenter {
     display: flex;
     justify-content: center;
@@ -29,6 +48,10 @@
 
   .flexcol {
     flex-direction: column;
+  }
+
+  .flexrow{
+    flex-direction: row;
   }
 
   .messagebox li {
@@ -52,11 +75,15 @@
     width: 100%;
   }
 
+  .width70 {
+    width: 70%;
+  }
+
   label {
     font-weight: 600;
   }
 
-  input[type="number"],
+  input[type="text"],
   select,
   textarea {
     background-color: #2b2b2b;

@@ -4,22 +4,43 @@
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
+    "fd-slicer": "^1.1.0",
+    "find-chrome-bin": "^2.0.2",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.31.0"
   },
   "name": "whatsapp-automation",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "This is a description.",
+  "main": "main.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "whatsapp-broadcast",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "whatsapp-broadcast",
+      "license": "license.md",
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "electron": "^37.1.0"
+    "electron": "^37.1.0",
+    "electron-builder": "^26.0.12"
   }
 }

@@ -1,9 +1,18 @@
-const { app, BrowserWindow, ipcMain } = require("electron/main");
-const path = require("path");
-const { Client, LocalAuth } = require("whatsapp-web.js");
-const qrcode = require("qrcode-terminal");
+import { app, BrowserWindow, ipcMain } from 'electron/main';
+import path from 'path';
+import pkg from 'whatsapp-web.js';
+import { fileURLToPath } from 'url';
+import { findChrome } from 'find-chrome-bin'
+import { dirname } from 'path';
 
+const  { Client, LocalAuth } = pkg;
 let client;
+
+const chromeInfo = await findChrome()
+console.log(chromeInfo)
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -15,6 +24,7 @@ const createWindow = () => {
   });
   console.log(__dirname + "\\index.html");
   win.loadURL(path.join(__dirname + "\\index.html"));
+  // win.loadURL("http://localhost:5173/");
 };
 
 app.whenReady().then(() => {
@@ -40,6 +50,7 @@ ipcMain.handle("create-whatsapp-qr", async () => {
       client = new Client({
         puppeteer: {
           args: ["--no-sandbox", "--disable-setuid-sandbox"],
+          executablePath: chromeInfo.executablePath
         },
         authStrategy: new LocalAuth(),
       });
