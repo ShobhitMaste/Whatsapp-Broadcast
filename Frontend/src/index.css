@@ -127,6 +127,37 @@
     align-items: center;
   }
 
+  .fixed {
+    position: fixed;
+    top:34px;
+    right:5%;
+  }
+
+  .button{
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .button:hover{
+    transform: scale(1.2);
+  }
+
+  .help{
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .textleft{
+    text-align: left;
+  }
+
+
+
+
+
+
+
+
+
   @media (max-width: 768px) {
     .forms {
       width: 90%;

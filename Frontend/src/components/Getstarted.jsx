@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
-export default function Getstarted({ onConnect }) {
+export default function Getstarted({ onConnect, onClick }) {
   const [launch, setLaunch] = useState(false);
   const [qrURL, setQRURL] = useState("");
   const [loadingQR, setLoadingQR] = useState(true);
@@ -33,21 +33,25 @@ export default function Getstarted({ onConnect }) {
     }
   };
   return (
-    <>
-      <div className="flexcol flexcenter">
-        <button onClick={startWhatsapp}>Get Started</button>
-        <br />
-        {loadingQR && getStartedClicked && (
-          <div>
-            <p className="text">
-              Fetching Data...<span className="loader"></span>
-            </p>
-          </div>
-        )}
-        {launch && (
+    <div className="flexcol flexcenter">
+      <button onClick={() => {
+        onClick();
+        startWhatsapp();
+      }}>Get Started</button>
+      <br />
+      {loadingQR && getStartedClicked && (
+        <div>
+          <p className="text">
+            Fetching Data...<span className="loader"></span>
+          </p>
+        </div>
+      )}
+      {launch && (
+        <>
+          <h4 className="mb-3">Scan the Qr code below using whatsapp to link device</h4>
           <QRCodeSVG value={qrURL} size={200} level="H" includeMargin={true} />
-        )}
-      </div>
-    </>
+        </>
+      )}
+    </div>
   );
 }

@@ -9,7 +9,7 @@ const  { Client, LocalAuth } = pkg;
 let client;
 
 const chromeInfo = await findChrome()
-console.log(chromeInfo)
+// console.log(chromeInfo)
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,12 +20,12 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      devTools: false
+      // devTools: false
     },
   });
-  console.log(__dirname + "\\index.html");
-  win.loadURL(path.join(__dirname + "\\index.html"));
-  // win.loadURL("http://localhost:5173/");
+  // console.log(__dirname + "\\index.html");
+  // win.loadURL(path.join(__dirname + "\\index.html"));
+  win.loadURL("http://localhost:5173/");
 };
 
 app.whenReady().then(() => {
