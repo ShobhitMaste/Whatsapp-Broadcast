@@ -95,6 +95,7 @@ Once launched, scan the WhatsApp QR code to link your WhatsApp Web session to th
 - Sending appointment reminders or updates to unsaved numbers  
 - Group messaging for marketing or outreach without manual contact entry  
 - Internal team notifications via WhatsApp Web interface
+- Use for marketing of a business
 
 ---
 
@@ -103,11 +104,6 @@ Once launched, scan the WhatsApp QR code to link your WhatsApp Web session to th
 Contributions are welcome! Please open an issue to discuss major changes or submit pull requests for enhancements.
 
 ---
-
-## License
-
-Distributed under **[Your Chosen License]**. See `license.md` for more details.
-
 ---
 
 ## 🔗 Links
