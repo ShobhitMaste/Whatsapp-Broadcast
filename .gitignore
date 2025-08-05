@@ -1,5 +1,6 @@
 node_modules
 .env
+methods
 .wwebjs_cache
 .wwebjs_auth
 # Logs

@@ -20,12 +20,12 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      // devTools: false
+      devTools: false
     },
   });
   // console.log(__dirname + "\\index.html");
-  // win.loadURL(path.join(__dirname + "\\index.html"));
-  win.loadURL("http://localhost:5173/");
+  win.loadURL(path.join(__dirname + "\\index.html"));
+  // win.loadURL("http://localhost:5173/");
 };
 
 app.whenReady().then(() => {
