@@ -63,7 +63,8 @@ export default function Input() {
           <label className="mt-4 mb-2">Number - </label>
           <input
             name="number"
-            type="text" pattern="[0-9]{10}"
+            type="text"
+            pattern="[0-9]{10}"
             className="mb-3"
             onInput={handleSubmitChange}
             required
