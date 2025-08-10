@@ -3,6 +3,7 @@ import Input from "./components/Input";
 import Getstarted from "./components/Getstarted";
 import Help from "./components/Help";
 import { useState } from "react";
+import Template from "./components/Template";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -19,13 +20,16 @@ function App() {
   return (
     <>
       <Header />
-      {!loggedIn && (
+      {loggedIn && (
         <>
           <Getstarted onClick={handleClick} onConnect={handleLogin} />
           {!clickedGetStarted && <Help />}
         </>
       )}
-      {loggedIn && <Input />}
+      {!loggedIn && <div className="inputScreen">
+        <Template/>
+        <Input />
+        </div>}
     </>
   );
 }

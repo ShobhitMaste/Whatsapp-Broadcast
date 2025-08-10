@@ -3,6 +3,7 @@
     "@electron/remote": "^2.1.2",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
+    "electron-store": "^10.1.0",
     "express": "^5.1.0",
     "fd-slicer": "^1.1.0",
     "find-chrome-bin": "^2.0.2",

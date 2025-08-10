@@ -4,6 +4,8 @@ import pkg from 'whatsapp-web.js';
 import { fileURLToPath } from 'url';
 import { findChrome } from 'find-chrome-bin'
 import { dirname } from 'path';
+import { saveTemplate, getTemplate } from './storage.mjs';
+
 
 const  { Client, LocalAuth } = pkg;
 let client;
@@ -20,12 +22,12 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      devTools: false
+      // devTools: false
     },
   });
   // console.log(__dirname + "\\index.html");
-  win.loadURL(path.join(__dirname + "\\index.html"));
-  // win.loadURL("http://localhost:5173/");
+  // win.loadURL(path.join(__dirname + "\\index.html"));
+  win.loadURL("http://localhost:5173/");
 };
 
 app.whenReady().then(() => {
@@ -38,7 +40,15 @@ app.whenReady().then(() => {
   });
 });
 
-app.on("window-all-closed", () => {
+app.on("window-all-closed",async () => {
+  console.log('(SIGINT) Shutting down...');
+      try {
+        await client.destroy();
+        console.log("Client Killed");
+      } catch (e) {
+        console.log("error\n" + e);
+      }
+      console.log('client destroyed');
   if (process.platform !== "darwin") {
     app.quit();
   }
@@ -64,7 +74,7 @@ ipcMain.handle("create-whatsapp-qr", async () => {
       });
 
       client.on("ready", () => {
-        console.log("Client is ready! from start whjatsap[p");
+        console.log("Client is ready! from create QR");
         resolve(1);
       });
 
@@ -86,7 +96,7 @@ ipcMain.handle("start-whatsapp", async () => {
   try{
     return new Promise((resolve, reject) => {
       client.on("ready", () => {
-        console.log("Client is ready! from start whjatsap[p");
+        console.log("Client is ready! from start Whatsapp");
         resolve(1);
       });
     })
@@ -113,3 +123,6 @@ ipcMain.handle("send-message", async (event, { number, message }) => {
     console.log(err);
   }
 });
+
+ipcMain.handle("save-template", (event, data) => saveTemplate(data));
+ipcMain.handle("get-template", getTemplate);

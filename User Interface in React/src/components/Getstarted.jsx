@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
+let isClicked = false;
 export default function Getstarted({ onConnect, onClick }) {
   const [launch, setLaunch] = useState(false);
   const [qrURL, setQRURL] = useState("");
   const [loadingQR, setLoadingQR] = useState(true);
   const [getStartedClicked, setGetStartedClicked] = useState(false);
-
   const startWhatsapp = async () => {
+    if(isClicked == true) return;
+    isClicked = true;
+    console.log("is clicked - " + isClicked)
     setGetStartedClicked(true);
     const qrString = await window.electronAPI.createWhatsappQRcode();
     setLoadingQR(false);
-    if (qrString != "1") {
+    if (qrString != "1" && qrString != "-1") {
       setQRURL(qrString);
       // console.log("---START QR STRING---");
       // console.log(qrString);
@@ -27,7 +30,11 @@ export default function Getstarted({ onConnect, onClick }) {
       if (connected) {
         console.log("successfully connected!!");
       }
-    } else {
+    }
+    else if( qrString == "-1"){
+      //do nothing
+    }
+    else {
       onConnect(true);
       console.log("successfully connected!!");
     }
@@ -37,6 +44,7 @@ export default function Getstarted({ onConnect, onClick }) {
       <button onClick={() => {
         onClick();
         startWhatsapp();
+        
       }}>Get Started</button>
       <br />
       {loadingQR && getStartedClicked && (
