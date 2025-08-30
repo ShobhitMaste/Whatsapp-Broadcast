@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
+import Message from "./Message";
 
 export default function Template() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [addingTemplate, setAddingTemplate] = useState(false);
   const [templates, setTemplates] = useState([]);
-  console.log(templates);
+  // console.log(templates);
   useEffect(() => {}, []);
 
   function handleAddClick() {
@@ -32,11 +33,16 @@ export default function Template() {
         </svg>
       )}
       {sidebarOpen && (
-        <div className="template">
+        <div className="template scrollable">
           <h3>Templates</h3>
           <div className="addTemplate">
             <button onClick={handleAddClick}>Add</button>
             <button onClick={handleSideBarButton}>Close</button>
+          </div>
+          <div>
+            {templates.map((messageTemplate, index) => {
+              return <Message message={messageTemplate} key={index} index={index} editMessage={setTemplates}/>
+            })}
           </div>
         </div>
       )}

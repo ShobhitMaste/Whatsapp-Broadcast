@@ -20,13 +20,13 @@ function App() {
   return (
     <>
       <Header />
-      {!loggedIn && (
+      {loggedIn && (
         <>
           <Getstarted onClick={handleClick} onConnect={handleLogin} />
           {!clickedGetStarted && <Help />}
         </>
       )}
-      {loggedIn && <div className="inputScreen">
+      {!loggedIn && <div className="inputScreen">
         <Template/>
         <Input />
         </div>}
