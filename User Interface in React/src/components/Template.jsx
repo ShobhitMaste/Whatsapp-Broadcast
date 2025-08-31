@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import Message from "./Message";
 
-export default function Template() {
+export default function Template({inputBoxRef}) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [addingTemplate, setAddingTemplate] = useState(false);
   const [templates, setTemplates] = useState([]);
@@ -15,7 +15,16 @@ export default function Template() {
   }
 
   function handleSideBarButton() {
-    setSidebarOpen((prev) => !prev);
+    setSidebarOpen((prev) => {
+      if(prev){
+        //false
+        inputBoxRef.current.style.translate = "0% 0%";
+      } else {
+        //true
+        inputBoxRef.current.style.translate = "30% 0%";
+      }
+      return !prev;
+    });
   }
   return (
     <div>

@@ -25,7 +25,7 @@ const createWindow = () => {
       // devTools: false
     },
   });
-  // console.log(__dirname + "\\index.html");
+  console.log(__dirname + "\\index.html");
   // win.loadURL(path.join(__dirname + "\\index.html"));
   win.loadURL("http://localhost:5173/");
 };

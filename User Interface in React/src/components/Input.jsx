@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function Input() {
+export default function Input({inputBoxRef}) {
   const [messages, setMessages] = useState([]);
   const [messageBoxes, setMessageBoxes] = useState(1);
   const [messageStatus, setMessageStatus] = useState("Sending Message...");
@@ -50,7 +50,7 @@ export default function Input() {
 
   return (
     <div className="flexcenter flexcol mt-4">
-      <div className="flexcenter width70">
+      <div  ref={inputBoxRef} className="flexcenter width70">
         <form
           className="flexstart flexcol forms pb-5 mb-5"
           onSubmit={handleSubmit}

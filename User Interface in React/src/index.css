@@ -1,177 +1,179 @@
+/* Base styling */
+body {
+  background-color: #101010;
+  color: #f1f1f1;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  /* Base styling */
-  body {
-    background-color: #101010;
-    color: #f1f1f1;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #00ff99;
+  text-shadow: 1px 1px 5px #00ff9950;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #00ff99;
-    text-shadow: 1px 1px 5px #00ff9950;
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 30px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 6px solid lightblue;
+  border-right-color: orange;
+  animation: l2 1s infinite linear;
+  float: right;
+  margin-left: 10px;
+}
+@keyframes l2 {
+  to {
+    transform: rotate(1turn);
   }
+}
 
-  /* HTML: <div class="loader"></div> */
-  .loader {
-    width: 30px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 6px solid lightblue;
-    border-right-color: orange;
-    animation: l2 1s infinite linear;
-    float: right;
-    margin-left: 10px;
-  }
-  @keyframes l2 {to{transform: rotate(1turn)}}
+.text {
+  font-size: 17px;
+  font-weight: bold;
+}
 
-  
-  .text{
-    font-size: 17px;
-    font-weight: bold;
-  }
+.flexcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .flexcenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.flexstart {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
 
-  .flexstart {
-    display: flex;
-    justify-content: start;
-    align-items: start;
-  }
+.flexcol {
+  flex-direction: column;
+}
 
-  .flexcol {
-    flex-direction: column;
-  }
+.flexrow {
+  flex-direction: row;
+}
 
-  .flexrow{
-    flex-direction: row;
-  }
+.messagebox li {
+  list-style: none;
+}
 
-  .messagebox li {
-    list-style: none;
-  }
+.forms {
+  width: 70%;
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #00ff9940;
+  transition: all 0.3s ease-in-out;
+}
 
-  .forms {
-    width: 70%;
-    background-color: #1e1e1e;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #00ff9940;
-    transition: all 0.3s ease-in-out;
-  }
+.forms:hover {
+  box-shadow: 0 0 15px #00ff99;
+}
 
-  .forms:hover {
-    box-shadow: 0 0 15px #00ff99;
-  }
+.width100 {
+  width: 100%;
+}
 
-  .width100 {
-    width: 100%;
-  }
+.width70 {
+  width: 70%;
+}
 
-  .width70 {
-    width: 70%;
-  }
+label {
+  font-weight: 600;
+}
 
-  label {
-    font-weight: 600;
-  }
+input[type="text"],
+select,
+textarea {
+  background-color: #2b2b2b;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 0.5rem;
+  /* margin-top: 0.5rem; */
+  width: 100%;
+}
 
-  input[type="text"],
-  select,
-  textarea {
-    background-color: #2b2b2b;
-    color: white;
-    border: 1px solid #555;
-    border-radius: 6px;
-    padding: 0.5rem;
-    /* margin-top: 0.5rem; */
-    width: 100%;
-  }
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
 
-  textarea {
-    min-height: 80px;
-    resize: vertical;
-  }
+button {
+  background-color: #00ff99;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
 
-  button {
-    background-color: #00ff99;
-    border: none;
-    color: black;
-    font-weight: bold;
-    padding: 0.3rem 0.8rem;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-  }
+button:hover {
+  background-color: #00cc7a;
+}
 
-  button:hover {
-    background-color: #00cc7a;
-  }
+.floatRight {
+  float: right;
+}
+.floatLeft {
+  float: left;
+}
 
-  .floatRight{
-    float: right
-  }
-  .floatLeft{
-    float: left;
-  }
+.flexspaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .flexspaceBetween{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.fixed {
+  position: fixed;
+  top: 34px;
+  right: 5%;
+}
 
-  .fixed {
-    position: fixed;
-    top:34px;
-    right:5%;
-  }
+.button {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.button:hover {
+  transform: scale(1.2);
+}
 
-  .button{
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  .button:hover{
-    transform: scale(1.2);
-  }
+.help {
+  font-size: 20px;
+  text-align: center;
+}
 
-  .help{
-    font-size: 20px;
-    text-align: center;
-  }
+.textleft {
+  text-align: left;
+}
 
-  .textleft{
-    text-align: left;
-  }
-
-  .inputScreen{
-    /* display: grid;
+.inputScreen {
+  /* display: grid;
     grid-template-columns: 1fr 3fr; */
-    margin:10px;
-  }
+  margin: 10px;
+}
 
-  .template{
-    background-color: rgb(63, 63, 63);
-    border-radius: 5px;
-    position: absolute;
-    min-width: 23%;
-    max-height: 70%;
-    overflow-y: scroll;
-  }
-  
-  .template > h3{
-    text-align: center;
-  }
+.template {
+  background-color: rgb(63, 63, 63);
+  border-radius: 5px;
+  position: absolute;
+  min-width: 40%;
+  max-height: 70%;
+  overflow-y: scroll;
+}
 
-  .scrollable {
-  scrollbar-width: thin;              /* For Firefox */
-  scrollbar-color: #322d2d #000000;      /* For Firefox */
+.template > h3 {
+  text-align: center;
+}
+
+.scrollable {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #322d2d #000000; /* For Firefox */
 }
 
 /* WebKit-based browsers */
@@ -196,27 +198,25 @@
   background-color: #000000;
 }
 
+.addTemplate {
+  display: flex;
+  justify-content: center;
+  margin-right: 5%;
+}
+.addTemplate button {
+  margin: 5px;
+}
 
+.sidebaricon {
+  position: absolute;
+  margin-left: 2%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-  .addTemplate{
-    display: flex;
-    justify-content: center;
-    margin-right: 5%;
-  }
-  .addTemplate button{
-    margin:5px;
-  }
-
-  .sidebaricon{
-    position: absolute;
-    margin-left: 2%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .sidebaricon:hover{
-    transform: scale(1.26);
-  }
+.sidebaricon:hover {
+  transform: scale(1.26);
+}
 
 .modal-overlay {
   position: fixed;
@@ -224,12 +224,12 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.3); 
-  backdrop-filter: blur(5px); 
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   z-index: 20;
 }
 
- .modalPrivate {
+.modalPrivate {
   position: fixed;
   top: 40%;
   left: 50%;
@@ -239,34 +239,55 @@
   background-color: #262626;
   opacity: 80%;
   border: 2px solid black;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   min-width: 40%;
   min-height: 20%;
   border-radius: 20px;
 }
 
-.modalPrivate textarea{
+.modalPrivate textarea {
   min-height: 150px;
 }
 
-.modalsave{
+.modalsave {
   margin: 10px;
 }
 
-.messageBox{
+.editMessageBox {
   /* border: 2px solid rgb(97, 210, 135); */
-  margin:10px;
+  margin: 10px;
   border-radius: 5px;
   /* background-color: rgb(0, 0, 0); */
 }
-.messageBox > textarea {
-  margin:0px;
-  border:0px;
+.editMessageBox > textarea {
+  margin: 0px;
+  border: 0px;
 }
 
-  @media (max-width: 768px) {
-    .forms {
-      width: 90%;
-      padding: 1.5rem;
-    }
+.MessageBox {
+  border: 3px solid rgb(27, 113, 40);
+  width: 100%;
+  border-radius: 5px;
+  padding:5px;
+  white-space: pre-line;
+}
+
+.CopyMessage{
+/* Maybe add copy animation and effects here */
+}
+
+.editMessageBox button{
+  background: none;
+  /* background-color: rgb(63, 63, 63);; */
+  color:white;
+  padding-right: 10px;
+}
+.editMessageBox button:hover{
+  scale: 1.1;
+}
+@media (max-width: 768px) {
+  .forms {
+    width: 90%;
+    padding: 1.5rem;
   }
+}

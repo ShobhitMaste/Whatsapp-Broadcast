@@ -2,13 +2,13 @@ import Header from "./components/Header";
 import Input from "./components/Input";
 import Getstarted from "./components/Getstarted";
 import Help from "./components/Help";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Template from "./components/Template";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [clickedGetStarted, setClickedGetStarted] = useState(false);
-
+  const inputBoxRef = useRef();
   function handleLogin(value) {
     setLoggedIn(value);
   }
@@ -27,8 +27,8 @@ function App() {
         </>
       )}
       {!loggedIn && <div className="inputScreen">
-        <Template/>
-        <Input />
+        <Template inputBoxRef={inputBoxRef}/>
+        <Input inputBoxRef={inputBoxRef}/>
         </div>}
     </>
   );
