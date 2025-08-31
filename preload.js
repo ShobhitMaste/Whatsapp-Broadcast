@@ -6,5 +6,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     WhatsappReady: () => ipcRenderer.invoke('start-whatsapp'),
     sendMessage: (data) => ipcRenderer.invoke('send-message', data),
     saveTemplate: (data) => ipcRenderer.invoke('save-template', data),
-    getTemplate: () => ipcRenderer.invoke('get-template')
+    getTemplate: (key) => ipcRenderer.invoke('get-template', key)
 });

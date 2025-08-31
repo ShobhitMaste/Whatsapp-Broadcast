@@ -2,12 +2,28 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import Message from "./Message";
 
-export default function Template({inputBoxRef}) {
+export default function Template({ inputBoxRef }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [addingTemplate, setAddingTemplate] = useState(false);
   const [templates, setTemplates] = useState([]);
-  // console.log(templates);
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    async function getStorageTemplate() {
+      let storedTemplate = await window.electronAPI.getTemplate("template");
+      setTemplates(storedTemplate);
+    }
+    getStorageTemplate();
+  }, []);
+
+  useEffect(() => {
+    async function storeData() {
+      await window.electronAPI.saveTemplate({
+        key: "template",
+        data: templates,
+      });
+    }
+    storeData();
+  }, [templates]);
 
   function handleAddClick() {
     // setAddingTemplate(true);
@@ -16,7 +32,7 @@ export default function Template({inputBoxRef}) {
 
   function handleSideBarButton() {
     setSidebarOpen((prev) => {
-      if(prev){
+      if (prev) {
         //false
         inputBoxRef.current.style.translate = "0% 0%";
       } else {
@@ -50,7 +66,14 @@ export default function Template({inputBoxRef}) {
           </div>
           <div>
             {templates.map((messageTemplate, index) => {
-              return <Message message={messageTemplate} key={index} index={index} editMessage={setTemplates}/>
+              return (
+                <Message
+                  message={messageTemplate}
+                  key={index}
+                  index={index}
+                  editMessage={setTemplates}
+                />
+              );
             })}
           </div>
         </div>

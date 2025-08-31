@@ -50,8 +50,9 @@ export default function Message({ message, editMessage, index }) {
         </div>
       )}
       {!isEditing && (
-        <div>
-          <p className="MessageBox m-0">{message}</p>
+        <div className="MessageBox">
+          <p className="m-0">{message}</p>
+          <hr className="my-2"/>
           <div>
             <button onClick={handleCopy}>Copy</button>
             <button className="mx-2" onClick={() => setIsEditing(true)}>

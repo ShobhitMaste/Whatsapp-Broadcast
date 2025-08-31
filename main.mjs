@@ -125,4 +125,4 @@ ipcMain.handle("send-message", async (event, { number, message }) => {
 });
 
 ipcMain.handle("save-template", (event, data) => saveTemplate(data));
-ipcMain.handle("get-template", getTemplate);
+ipcMain.handle("get-template", (event, key) => getTemplate(key));

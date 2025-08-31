@@ -265,7 +265,7 @@ button:hover {
 }
 
 .MessageBox {
-  border: 3px solid rgb(27, 113, 40);
+  border: 2px solid rgb(0, 0, 0);
   width: 100%;
   border-radius: 5px;
   padding:5px;
@@ -290,4 +290,8 @@ button:hover {
     width: 90%;
     padding: 1.5rem;
   }
+}
+
+html{
+  overflow-x: hidden;
 }
