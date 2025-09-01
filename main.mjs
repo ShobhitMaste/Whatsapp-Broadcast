@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url';
 import { findChrome } from 'find-chrome-bin'
 import { dirname } from 'path';
 import { saveTemplate, getTemplate } from './utils/storage.mjs';
+import {rimraf} from "rimraf" 
+import fs from "fs"
 
 
 const  { Client, LocalAuth } = pkg;
@@ -15,6 +17,9 @@ const chromeInfo = await findChrome()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const flagPath = path.join(app.getPath("userData"), "delete_on_start.flag");
+const authDir = path.join(__dirname, ".wwebjs_auth");
+const cacheDir = path.join(__dirname, ".wwebjs_cache");
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -22,15 +27,38 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      // devTools: false
+      devTools: false
     },
   });
   // console.log(__dirname + "\\html\\index.html");
-  // win.loadURL(path.join(__dirname + "\\html\\index.html"));
-  win.loadURL("http://localhost:5173/");
+  win.loadURL(path.join(__dirname + "\\html\\index.html"));
+  // win.loadURL("http://localhost:5173/");
 };
 
+console.log(app.getPath("userData"))
+
+ipcMain.handle('logout', async () => {
+  fs.writeFileSync(flagPath, "logout");
+  app.relaunch();
+  app.quit();
+});
+
+// console.log(__dirname + "\\.wwebjs_auth")
+console.log(__dirname + "\\.wwebjs_cache")
 app.whenReady().then(() => {
+  if (fs.existsSync(flagPath)) {
+    try {
+      rimraf.sync(authDir);
+      rimraf.sync(cacheDir);
+      console.log("Deleted old session after logout");
+    } catch (err) {
+      console.error("Error deleting session:", err);
+    }
+    fs.unlinkSync(flagPath); // remove marker
+      app.relaunch();
+      app.quit();
+  }
+
   createWindow();
 
   app.on("activate", () => {
@@ -126,3 +154,7 @@ ipcMain.handle("send-message", async (event, { number, message }) => {
 
 ipcMain.handle("save-template", (event, data) => saveTemplate(data));
 ipcMain.handle("get-template", (event, key) => getTemplate(key));
+
+app.on('quit', (event, Exitcode) => {
+  console.log("quitted");
+})
