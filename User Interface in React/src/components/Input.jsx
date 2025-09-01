@@ -50,7 +50,7 @@ export default function Input({inputBoxRef}) {
 
   return (
     <div className="flexcenter flexcol mt-4">
-      <div  ref={inputBoxRef} className="flexcenter width70">
+      <div  ref={inputBoxRef} className="flexcenter width70 mainBody">
         <form
           className="flexstart flexcol forms pb-5 mb-5"
           onSubmit={handleSubmit}

@@ -4,7 +4,7 @@ import pkg from 'whatsapp-web.js';
 import { fileURLToPath } from 'url';
 import { findChrome } from 'find-chrome-bin'
 import { dirname } from 'path';
-import { saveTemplate, getTemplate } from './storage.mjs';
+import { saveTemplate, getTemplate } from './utils/storage.mjs';
 
 
 const  { Client, LocalAuth } = pkg;
@@ -25,8 +25,8 @@ const createWindow = () => {
       // devTools: false
     },
   });
-  console.log(__dirname + "\\index.html");
-  // win.loadURL(path.join(__dirname + "\\index.html"));
+  // console.log(__dirname + "\\html\\index.html");
+  // win.loadURL(path.join(__dirname + "\\html\\index.html"));
   win.loadURL("http://localhost:5173/");
 };
 

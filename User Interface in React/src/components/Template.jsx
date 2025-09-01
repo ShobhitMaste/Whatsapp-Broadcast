@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import Message from "./Message";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Template({ inputBoxRef }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -57,8 +58,15 @@ export default function Template({ inputBoxRef }) {
           <path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" />
         </svg>
       )}
+      <AnimatePresence>
       {sidebarOpen && (
-        <div className="template scrollable">
+        <motion.div
+          className="template scrollable"
+          initial={{ x: "-100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: "-100%", opacity: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 18 }}
+        >
           <h3>Templates</h3>
           <div className="addTemplate">
             <button onClick={handleAddClick}>Add</button>
@@ -76,8 +84,9 @@ export default function Template({ inputBoxRef }) {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
       {addingTemplate && (
         <Modal addTemplate={setTemplates} closeModal={handleAddClick} />
       )}

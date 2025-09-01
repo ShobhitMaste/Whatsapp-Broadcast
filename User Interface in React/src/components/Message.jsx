@@ -25,13 +25,17 @@ export default function Message({ message, editMessage, index }) {
     setIsEditing(false);
   }
   function handleDelete() {
-    editMessage((prev) => {
-      let updated = [...prev];
-      console.log(updated);
-      updated.splice(index, 1);
-      console.log(updated);
-      return updated;
-    });
+    let ans = confirm("Are you sure you want to delete this template");
+    console.log("answer - " + ans);
+    if(ans){
+      editMessage((prev) => {
+        let updated = [...prev];
+        console.log(updated);
+        updated.splice(index, 1);
+        console.log(updated);
+        return updated;
+      });
+    }
   }
   function handleCopy() {
     navigator.clipboard.writeText(message).then(() => {

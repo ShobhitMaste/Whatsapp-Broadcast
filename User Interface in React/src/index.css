@@ -276,6 +276,10 @@ button:hover {
 /* Maybe add copy animation and effects here */
 }
 
+.mainBody{
+  transition: translate 0.5s ease;
+}
+
 .editMessageBox button{
   background: none;
   /* background-color: rgb(63, 63, 63);; */
